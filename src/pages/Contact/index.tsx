@@ -1,44 +1,32 @@
-import SocialLinks from '@/components/SocialLinks';
-import {
-  Alert,
-  Box,
-  Button,
-  Container,
-  Group,
-  SimpleGrid,
-  Text,
-  TextInput,
-  Textarea,
-  Title,
-  rem,
-} from '@mantine/core';
-import { isEmail, isNotEmpty, useForm } from '@mantine/form';
-import { useMediaQuery } from '@mantine/hooks';
-import { IconInfoCircle } from '@tabler/icons-react';
-import { useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
-import { ContactIconsList } from './icons';
-import classes from './index.module.css';
+import SocialLinks from "@/components/SocialLinks";
+import { Alert, Box, Button, Container, Group, SimpleGrid, Text, TextInput, Textarea, Title, rem } from "@mantine/core";
+import { isEmail, isNotEmpty, useForm } from "@mantine/form";
+import { useMediaQuery } from "@mantine/hooks";
+import { IconInfoCircle } from "@tabler/icons-react";
+import { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
+import { ContactIconsList } from "./icons";
+import classes from "./index.module.css";
 
 export function Contact() {
   const form = useForm({
     initialValues: {
-      email: '',
-      fullName: '',
-      message: '',
-      'g-recaptcha-response': '',
+      email: "",
+      fullName: "",
+      message: "",
+      "g-recaptcha-response": "",
     },
     validate: {
-      email: isEmail('Invalid email.'),
-      fullName: isNotEmpty('Enter your name.'),
-      message: isNotEmpty('Enter your message.'),
+      email: isEmail("Invalid email."),
+      fullName: isNotEmpty("Enter your name."),
+      message: isNotEmpty("Enter your message."),
     },
   });
 
   const [messageSending, setMessageSending] = useState(false);
   const [messageSent, setMessageSent] = useState<boolean | null>(null);
 
-  const isMobile = useMediaQuery('(max-width: 48em)');
+  const isMobile = useMediaQuery("(max-width: 48em)");
 
   return (
     <Container className={classes.wrapper}>
@@ -52,13 +40,7 @@ export function Contact() {
           <ContactIconsList />
 
           <Group mt="xl">
-            <SocialLinks
-              color="black"
-              size={30}
-              page="contact"
-              variant="transparent"
-              style={{ width: rem(30), height: rem(30) }}
-            />
+            <SocialLinks color="black" size={30} page="contact" variant="transparent" style={{ width: rem(30), height: rem(30) }} />
           </Group>
         </div>
         <Box
@@ -67,10 +49,10 @@ export function Contact() {
           onSubmit={form.onSubmit(async () => {
             setMessageSending(true);
             try {
-              const response = await fetch('https://webemail.bennynguyen.dev/', {
-                method: 'POST',
+              const response = await fetch("https://webemail.bennynguyen.dev/", {
+                method: "POST",
                 headers: {
-                  'Content-Type': 'application/json',
+                  "Content-Type": "application/json",
                 },
                 body: JSON.stringify(form.values),
               });
@@ -89,7 +71,7 @@ export function Contact() {
             placeholder="John Doe"
             required
             classNames={{ input: classes.input, label: classes.inputLabel }}
-            {...form.getInputProps('fullName')}
+            {...form.getInputProps("fullName")}
           />
           <TextInput
             disabled={messageSent != null}
@@ -99,7 +81,7 @@ export function Contact() {
             placeholder="your@email.com"
             required
             classNames={{ input: classes.input, label: classes.inputLabel }}
-            {...form.getInputProps('email')}
+            {...form.getInputProps("email")}
           />
           <Textarea
             disabled={messageSent != null}
@@ -109,16 +91,16 @@ export function Contact() {
             minRows={4}
             mt="md"
             classNames={{ input: classes.input, label: classes.inputLabel }}
-            {...form.getInputProps('message')}
+            {...form.getInputProps("message")}
           />
           {messageSent == null && (
             <ReCAPTCHA
               sitekey="6LdnCkIpAAAAAKGhynf4oAl_6wzJapkYWNQYhDbg"
-              onChange={(value) => form.setFieldValue('g-recaptcha-response', value as string)}
+              onChange={(value) => form.setFieldValue("g-recaptcha-response", value as string)}
               style={{
-                marginTop: 'var(--mantine-spacing-md)',
-                transform: isMobile ? 'scale(0.8)' : 'scale(1)',
-                transformOrigin: '0 0',
+                marginTop: "var(--mantine-spacing-md)",
+                transform: isMobile ? "scale(0.8)" : "scale(1)",
+                transformOrigin: "0 0",
               }}
             />
           )}
@@ -129,13 +111,7 @@ export function Contact() {
           </Group>
           {messageSent != null &&
             (messageSent ? (
-              <Alert
-                variant="light"
-                mt="md"
-                color="green"
-                title="Message sent!"
-                icon={<IconInfoCircle />}
-              >
+              <Alert variant="light" mt="md" color="green" title="Message sent!" icon={<IconInfoCircle />}>
                 Your message has been sent successfully!
               </Alert>
             ) : (

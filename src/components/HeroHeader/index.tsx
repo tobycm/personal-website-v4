@@ -1,6 +1,6 @@
-import { Container, Group, Space, Text, Title, rem } from '@mantine/core';
-import SocialLinks from '../SocialLinks';
-import classes from './index.module.css';
+import { Container, Group, Space, Text, Title, rem } from "@mantine/core";
+import SocialLinks from "../SocialLinks";
+import classes from "./index.module.css";
 
 export function HeroHeader() {
   return (
@@ -11,30 +11,19 @@ export function HeroHeader() {
             <Title order={2} className={classes.title} fw={500} c="white">
               This is
             </Title>
-            <Text
-              fw={700}
-              className={classes.title}
-              variant="gradient"
-              gradient={{ from: 'blue', to: 'lightblue' }}
-            >
+            <Text fw={700} className={classes.title} variant="gradient" gradient={{ from: "blue", to: "lightblue" }}>
               Benny Nguyen
             </Text>
             <Text className={classes.description} mt={30}>
-              A{' '}
+              A{" "}
               <Text component="span" inherit fw="bold">
                 Front-end developer
-              </Text>{' '}
+              </Text>{" "}
               who enjoys and wants to know more about programming.
             </Text>
             <Space mt={30} />
             <Group mt="xl">
-              <SocialLinks
-                color="white"
-                size={30}
-                page="hero"
-                variant="transparent"
-                style={{ width: rem(30), height: rem(30) }}
-              />
+              <SocialLinks color="white" size={30} page="hero" variant="transparent" style={{ width: rem(30), height: rem(30) }} />
             </Group>
           </div>
         </div>

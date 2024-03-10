@@ -1,6 +1,6 @@
-import { Container, Group, Text, rem } from '@mantine/core';
-import SocialLinks from '../SocialLinks';
-import classes from './index.module.css';
+import { Container, Group, Text, rem } from "@mantine/core";
+import SocialLinks from "../SocialLinks";
+import classes from "./index.module.css";
 
 export default function Footer() {
   return (
@@ -8,22 +8,16 @@ export default function Footer() {
       <Container className={classes.inner}>
         <div className={classes.logo}>
           <Group mb="sm">
-            <img
-              src="icons/webIcon.svg"
-              alt="Logo"
-              width={30}
-              height={30}
-              style={{ pointerEvents: 'none' }}
-            />
+            <img src="icons/webIcon.svg" alt="Logo" width={30} height={30} style={{ pointerEvents: "none" }} />
             <Text fz="lg" fw="bold">
               Benny Nguyen
             </Text>
           </Group>
           <Text size="xs" c="dimmed" className={classes.description}>
-            A{' '}
+            A{" "}
             <Text component="span" inherit fw="bold">
               Front-end developer
-            </Text>{' '}
+            </Text>{" "}
             who enjoys and wants to know more about programming.
           </Text>
         </div>
@@ -58,13 +52,7 @@ export default function Footer() {
         </Text>
 
         <Group gap={0} className={classes.social} justify="flex-end" wrap="nowrap">
-          <SocialLinks
-            color="gray"
-            size="lg"
-            page="footer"
-            variant="subtle"
-            style={{ width: rem(18), height: rem(18) }}
-          />
+          <SocialLinks color="gray" size="lg" page="footer" variant="subtle" style={{ width: rem(18), height: rem(18) }} />
         </Group>
       </Container>
     </footer>

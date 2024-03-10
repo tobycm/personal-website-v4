@@ -1,36 +1,36 @@
-import { createTheme, MantineProvider } from '@mantine/core';
-import '@mantine/core/styles.css';
-import { createBrowserRouter, RouteObject, RouterProvider } from 'react-router-dom';
-import Layout from './components/Layout';
-import { Error404 } from './pages/404';
-import { Contact } from './pages/Contact';
-import Home from './pages/Home';
-import Skills from './pages/Skills';
-import Works from './pages/Works';
+import { createTheme, MantineProvider } from "@mantine/core";
+import "@mantine/core/styles.css";
+import { createBrowserRouter, RouteObject, RouterProvider } from "react-router-dom";
+import Layout from "./components/Layout";
+import { Error404 } from "./pages/404";
+import { Contact } from "./pages/Contact";
+import Home from "./pages/Home";
+import Skills from "./pages/Skills";
+import Works from "./pages/Works";
 
 const routes: RouteObject[] = [
   {
-    path: '/',
+    path: "/",
     element: <Layout />,
     children: [
       {
-        path: '/',
+        path: "/",
         element: <Home />,
       },
       {
-        path: '/skills',
+        path: "/skills",
         element: <Skills />,
       },
       {
-        path: '/works',
+        path: "/works",
         element: <Works />,
       },
       {
-        path: '/contact',
+        path: "/contact",
         element: <Contact />,
       },
       {
-        path: '*',
+        path: "*",
         element: <Error404 />,
       },
     ],
@@ -43,7 +43,7 @@ export default function App() {
   return (
     <MantineProvider
       theme={createTheme({
-        fontFamily: 'Cabin, sans-serif',
+        fontFamily: "Cabin, sans-serif",
       })}
     >
       <RouterProvider router={router} />
